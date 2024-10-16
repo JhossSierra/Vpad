@@ -2,7 +2,8 @@
 import React, { useState } from 'react'
 import clsx from 'clsx';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import { cn } from '@/lib/utils';
+//import { cn } from '@/lib/utils';
+import { cn } from '@nextui-org/react'
 
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
     inputContainerClassName?:string,
     onChange?:(e:React.ChangeEvent<HTMLInputElement>)=>void,
     value?:string,
+    defaultValue?:string,
     leftIcon?: any,
     labelClassName?:string,
     disabled?:boolean,
@@ -20,7 +22,7 @@ type Props = {
     max?:number
 }
 
-function Input({max,name,mainInputClassName,label,placeholder,type,inputContainerClassName,value,onChange,leftIcon,labelClassName,disabled }: Props) {
+function Input({max,name,mainInputClassName,label,placeholder,type,inputContainerClassName,value,defaultValue,onChange,leftIcon,labelClassName,disabled }: Props) {
     const [showPreview, setShowPreview] = useState(false);
 
 
@@ -35,6 +37,7 @@ function Input({max,name,mainInputClassName,label,placeholder,type,inputContaine
             <div className={cn('bg-[#1b1d1e]  w-full h-11 flex items-center justify-start p-3 rounded-lg',inputContainerClassName)}>
             {leftIcon && <div className='mr-2'>{leftIcon}</div>}
                 <input
+                    defaultValue={defaultValue}
                     maxLength={max}
                     name={name}
                     disabled={disabled}

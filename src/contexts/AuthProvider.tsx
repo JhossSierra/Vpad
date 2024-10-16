@@ -1,9 +1,11 @@
 'use client'
+import { UserProfile } from "@/types/Util";
 import React, { useState, createContext, ReactNode, useContext, useEffect } from "react";
 
+
 export interface AuthContextType {
-    user: any,
-    setUser: any
+    user?: UserProfile,
+    setUser?: Function 
 }
 
 interface AuthContextProviderProps {
@@ -11,12 +13,12 @@ interface AuthContextProviderProps {
 }
 
 export const AuthContext = createContext<AuthContextType>({
-    user: null,
-    setUser: () => { }
+    user: undefined,
+    setUser: () => {}
 });
 
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(undefined);
     return (
         <AuthContext.Provider value={{
             user,

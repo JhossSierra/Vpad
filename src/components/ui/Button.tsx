@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, FC } from 'react'
 import {VariantProps, cva} from 'class-variance-authority'
-import { cn } from '@/lib/utils'
+import { cn } from '@nextui-org/react'
 
 
 const buttonVariants = cva(
@@ -24,14 +24,14 @@ const buttonVariants = cva(
 )
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants>{
-  
 }
 
 
-const Button: FC<ButtonProps> = ({className,size,variant,...props}) => {
+const Button: FC<ButtonProps> = ({className,size,variant,type,...props}) => {
   return <button 
   {...props}
-  className={cn()}
+  type={type} 
+  className={cn(className)}
   ></button>
 }
 

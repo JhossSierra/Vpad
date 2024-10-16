@@ -3,12 +3,18 @@ import React from 'react'
 import { FaArrowDown, FaChevronDown } from 'react-icons/fa'
 import SidebarItem from './SidebarItem'
 import { useSidebarContext } from '@/contexts/SidebarContext'
+import SidebarProfile from './sidebarprofile'
+
 
 function Sidebar() {
+  const {open,setOpen} = useSidebarContext()
   
   return (
-    <div className='text-white overflow-y-scroll sidebar fixed top-0 left-0 z-[10000] w-[300px] p-6 rounded-2xl bg-[#0b0c0d] h-screen flex flex-col justify-start gap-5'>
-        <div className='pt-[70px]'>
+    <div onClick={()=>{setOpen(!open)}} className='text-white overflow-y-scroll sidebar fixed top-0 right-0 z-[10] w-[300px] p-6 rounded-2xl bg-[#0b0c0d] h-screen flex flex-col justify-start gap-5'>
+        <div className='pt-[50px]'>
+
+          <SidebarProfile/>
+
         <div className='w-full flex flex-col items-start justify-start border-t-1 border-t-[#eeeeee4e] pt-3'>
           <p>Subscriptions</p>
            <SidebarItem

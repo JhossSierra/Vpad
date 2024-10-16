@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Onest } from "next/font/google";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react"; 
 import { GlobalContextProvider } from "@/contexts/GlobalContext";
 // import { NextUIProvider } from '../lib/next-ui';
+
+import Sidebar from "@/components/ui/Sidebar";
+import { useSidebarContext } from "@/contexts/SidebarContext";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -23,9 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={onest.className}>
-        <NextUIProvider>
-          <GlobalContextProvider>{children}</GlobalContextProvider>
-        </NextUIProvider>
+        <NextUIProvider> 
+          <GlobalContextProvider>
+            
+            {children}
+          </GlobalContextProvider>
+        </NextUIProvider> 
         </body>
     </html>
   );
